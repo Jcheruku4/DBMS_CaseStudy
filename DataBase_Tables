@@ -1,0 +1,93 @@
+-- User Table
+CREATE TABLE Users (
+    UserID NUMBER PRIMARY KEY,
+    Name VARCHAR2(100),
+    Email VARCHAR2(100) UNIQUE,
+    PhoneNumber VARCHAR2(15) UNIQUE,
+    Password VARCHAR2(100),
+    UserType VARCHAR2(20) CHECK (UserType IN ('Regular', 'Organizer'))
+);
+
+-- Venue Table
+CREATE TABLE Venue (
+    VenueID NUMBER PRIMARY KEY,
+    Name VARCHAR2(100),
+    Location VARCHAR2(255),
+    Capacity NUMBER,
+    SeatingLayout CLOB
+);
+
+-- Event Table
+CREATE TABLE Events (
+    EventID NUMBER PRIMARY KEY,
+    Title VARCHAR2(100),
+    Description CLOB,
+    Category VARCHAR2(20) CHECK (Category IN ('Movie', 'Concert', 'Sports', 'Play')),
+    EventDate DATE,
+    EventTime TIMESTAMP,
+    OrganizerID NUMBER,
+    VenueID NUMBER,
+    Status VARCHAR2(10) CHECK (Status IN ('Active', 'Cancelled')),
+    FOREIGN KEY (OrganizerID) REFERENCES Users(UserID),  -- Organizer stored in Users
+    FOREIGN KEY (VenueID) REFERENCES Venue(VenueID),
+    UNIQUE (Title, EventDate, EventTime, VenueID)
+);
+
+-- Seat Table
+CREATE TABLE Seat (
+    SeatID NUMBER PRIMARY KEY,
+    VenueID NUMBER,
+    SeatNumber VARCHAR2(10),
+    Category VARCHAR2(10) CHECK (Category IN ('Regular', 'VIP')),
+    Availability CHAR(1) CHECK (Availability IN ('Y', 'N')),
+    FOREIGN KEY (VenueID) REFERENCES Venue(VenueID),
+    UNIQUE (VenueID, SeatNumber)
+);
+
+-- Booking Table
+CREATE TABLE Booking (
+    BookingID NUMBER PRIMARY KEY,
+    UserID NUMBER,
+    EventID NUMBER,
+    BookingDate DATE,
+    BookingStatus VARCHAR2(10) CHECK (BookingStatus IN ('Confirmed', 'Cancelled')),
+    TotalAmount NUMBER(10, 2),
+    FOREIGN KEY (UserID) REFERENCES Users(UserID),
+    FOREIGN KEY (EventID) REFERENCES Events(EventID)
+);
+
+-- Ticket Table
+CREATE TABLE Ticket (
+    TicketID NUMBER PRIMARY KEY,
+    EventID NUMBER,
+    SeatID NUMBER,
+    Price NUMBER(10, 2),
+    QRCode VARCHAR2(255) UNIQUE,
+    BookingID NUMBER,
+    FOREIGN KEY (EventID) REFERENCES Events(EventID),
+    FOREIGN KEY (SeatID) REFERENCES Seat(SeatID),
+    FOREIGN KEY (BookingID) REFERENCES Booking(BookingID)
+);
+
+-- Payment Table
+CREATE TABLE Payment (
+    PaymentID NUMBER PRIMARY KEY,
+    BookingID NUMBER,
+    Amount NUMBER(10, 2),
+    PaymentMethod VARCHAR2(20) CHECK (PaymentMethod IN ('CreditCard', 'DebitCard', 'Wallet', 'UPI')),
+    Status VARCHAR2(10) CHECK (Status IN ('Success', 'Failed')),
+    PaymentDate DATE,
+    PaymentTime TIMESTAMP,
+    FOREIGN KEY (BookingID) REFERENCES Booking(BookingID)
+);
+
+-- Customer Support Table
+CREATE TABLE CustomerSupport (
+    SupportID NUMBER PRIMARY KEY,
+    UserID NUMBER,
+    IssueDescription CLOB,
+    IssueDate DATE,
+    ResolutionStatus VARCHAR2(50),
+    Feedback CLOB,
+    FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);
