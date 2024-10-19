@@ -1,93 +1,86 @@
 -- User Table
 CREATE TABLE Users (
-    UserID NUMBER PRIMARY KEY,
-    Name VARCHAR2(100),
-    Email VARCHAR2(100) UNIQUE,
-    PhoneNumber VARCHAR2(15) UNIQUE,
-    Password VARCHAR2(100),
-    UserType VARCHAR2(20) CHECK (UserType IN ('Regular', 'Organizer'))
+    UserID NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    Name VARCHAR2(100) NOT NULL,
+    Email VARCHAR2(100) UNIQUE NOT NULL,
+    PhoneNumber VARCHAR2(15) UNIQUE NOT NULL,
+    Password VARCHAR2(100) NOT NULL,
+    UserType VARCHAR2(20) CHECK (UserType IN ('Regular', 'Organizer')) NOT NULL
 );
-
 -- Venue Table
 CREATE TABLE Venue (
-    VenueID NUMBER PRIMARY KEY,
-    Name VARCHAR2(100),
-    Location VARCHAR2(255),
-    Capacity NUMBER,
+    VenueID NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    Name VARCHAR2(100) NOT NULL,
+    Location VARCHAR2(255) NOT NULL,
+    Capacity NUMBER NOT NULL,
     SeatingLayout CLOB
 );
-
 -- Event Table
 CREATE TABLE Events (
-    EventID NUMBER PRIMARY KEY,
-    Title VARCHAR2(100),
+    EventID NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    Title VARCHAR2(100) NOT NULL,
     Description CLOB,
-    Category VARCHAR2(20) CHECK (Category IN ('Movie', 'Concert', 'Sports', 'Play')),
-    EventDate DATE,
-    EventTime TIMESTAMP,
-    OrganizerID NUMBER,
-    VenueID NUMBER,
-    Status VARCHAR2(10) CHECK (Status IN ('Active', 'Cancelled')),
-    FOREIGN KEY (OrganizerID) REFERENCES Users(UserID),  -- Organizer stored in Users
+    Category VARCHAR2(20) CHECK (Category IN ('Movie', 'Concert', 'Sports', 'Play')) NOT NULL,
+    EventDate DATE NOT NULL,
+    EventTime TIMESTAMP NOT NULL,
+    OrganizerID NUMBER NOT NULL,
+    VenueID NUMBER NOT NULL,
+    Status VARCHAR2(10) CHECK (Status IN ('Active', 'Cancelled')) NOT NULL,
+    FOREIGN KEY (OrganizerID) REFERENCES Users(UserID),
     FOREIGN KEY (VenueID) REFERENCES Venue(VenueID),
-    UNIQUE (Title, EventDate, EventTime, VenueID)
+    CONSTRAINT unique_event UNIQUE (Title, EventDate, EventTime, VenueID)
 );
-
 -- Seat Table
 CREATE TABLE Seat (
-    SeatID NUMBER PRIMARY KEY,
-    VenueID NUMBER,
-    SeatNumber VARCHAR2(10),
-    Category VARCHAR2(10) CHECK (Category IN ('Regular', 'VIP')),
-    Availability CHAR(1) CHECK (Availability IN ('Y', 'N')),
+    SeatID NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    VenueID NUMBER NOT NULL,
+    SeatNumber VARCHAR2(10) NOT NULL,
+    Category VARCHAR2(10) CHECK (Category IN ('Regular', 'VIP')) NOT NULL,
+    Availability CHAR(1) CHECK (Availability IN ('Y', 'N')) NOT NULL,
     FOREIGN KEY (VenueID) REFERENCES Venue(VenueID),
-    UNIQUE (VenueID, SeatNumber)
+    CONSTRAINT unique_seat UNIQUE (VenueID, SeatNumber)
 );
-
 -- Booking Table
 CREATE TABLE Booking (
-    BookingID NUMBER PRIMARY KEY,
-    UserID NUMBER,
-    EventID NUMBER,
-    BookingDate DATE,
-    BookingStatus VARCHAR2(10) CHECK (BookingStatus IN ('Confirmed', 'Cancelled')),
-    TotalAmount NUMBER(10, 2),
+    BookingID NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    UserID NUMBER NOT NULL,
+    EventID NUMBER NOT NULL,
+    BookingDate DATE DEFAULT SYSDATE NOT NULL,
+    BookingStatus VARCHAR2(10) CHECK (BookingStatus IN ('Confirmed', 'Cancelled')) NOT NULL,
+    TotalAmount NUMBER(10, 2) NOT NULL,
     FOREIGN KEY (UserID) REFERENCES Users(UserID),
     FOREIGN KEY (EventID) REFERENCES Events(EventID)
 );
-
 -- Ticket Table
 CREATE TABLE Ticket (
-    TicketID NUMBER PRIMARY KEY,
-    EventID NUMBER,
-    SeatID NUMBER,
-    Price NUMBER(10, 2),
-    QRCode VARCHAR2(255) UNIQUE,
-    BookingID NUMBER,
+    TicketID NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    EventID NUMBER NOT NULL,
+    SeatID NUMBER NOT NULL,
+    Price NUMBER(10, 2) NOT NULL,
+    QRCode VARCHAR2(255) UNIQUE NOT NULL,
+    BookingID NUMBER NOT NULL,
     FOREIGN KEY (EventID) REFERENCES Events(EventID),
     FOREIGN KEY (SeatID) REFERENCES Seat(SeatID),
     FOREIGN KEY (BookingID) REFERENCES Booking(BookingID)
 );
-
 -- Payment Table
 CREATE TABLE Payment (
-    PaymentID NUMBER PRIMARY KEY,
-    BookingID NUMBER,
-    Amount NUMBER(10, 2),
-    PaymentMethod VARCHAR2(20) CHECK (PaymentMethod IN ('CreditCard', 'DebitCard', 'Wallet', 'UPI')),
-    Status VARCHAR2(10) CHECK (Status IN ('Success', 'Failed')),
-    PaymentDate DATE,
-    PaymentTime TIMESTAMP,
+    PaymentID NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    BookingID NUMBER NOT NULL,
+    Amount NUMBER(10, 2) NOT NULL,
+    PaymentMethod VARCHAR2(20) CHECK (PaymentMethod IN ('CreditCard', 'DebitCard', 'Wallet', 'UPI')) NOT NULL,
+    Status VARCHAR2(10) CHECK (Status IN ('Success', 'Failed')) NOT NULL,
+    PaymentDate DATE DEFAULT SYSDATE NOT NULL,
+    PaymentTime TIMESTAMP DEFAULT SYSTIMESTAMP NOT NULL,
     FOREIGN KEY (BookingID) REFERENCES Booking(BookingID)
 );
-
 -- Customer Support Table
 CREATE TABLE CustomerSupport (
-    SupportID NUMBER PRIMARY KEY,
-    UserID NUMBER,
-    IssueDescription CLOB,
-    IssueDate DATE,
-    ResolutionStatus VARCHAR2(50),
+    SupportID NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    UserID NUMBER NOT NULL,
+    IssueDescription CLOB NOT NULL,
+    IssueDate DATE DEFAULT SYSDATE NOT NULL,
+    ResolutionStatus VARCHAR2(50) NOT NULL,
     Feedback CLOB,
     FOREIGN KEY (UserID) REFERENCES Users(UserID)
 );
