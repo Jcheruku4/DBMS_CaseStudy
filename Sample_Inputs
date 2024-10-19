@@ -1,97 +1,176 @@
--- Regular Users
-INSERT INTO Users (UserID, Name, Email, PhoneNumber, Password, UserType)
-VALUES (1, 'John Doe', 'john@example.com', '1234567890', 'password123', 'Regular');
-INSERT INTO Users (UserID, Name, Email, PhoneNumber, Password, UserType)
-VALUES (2, 'Jane Smith', 'jane@example.com', '1234567891', 'password123', 'Regular');
-INSERT INTO Users (UserID, Name, Email, PhoneNumber, Password, UserType)
-VALUES (3, 'Alice Johnson', 'alice@example.com', '1234567892', 'password123', 'Regular');
-INSERT INTO Users (UserID, Name, Email, PhoneNumber, Password, UserType)
-VALUES (4, 'Bob Brown', 'bob@example.com', '1234567893', 'password123', 'Regular');
-
--- Organizers
-INSERT INTO Users (UserID, Name, Email, PhoneNumber, Password, UserType)
-VALUES (5, 'EventCorp', 'contact@eventcorp.com', '1234567894', 'securepass', 'Organizer');
-INSERT INTO Users (UserID, Name, Email, PhoneNumber, Password, UserType)
-VALUES (6, 'ShowTime', 'contact@showtime.com', '1234567895', 'securepass', 'Organizer');
-
-
-
-
--- Venues
-INSERT INTO Venue (VenueID, Name, Location, Capacity, SeatingLayout)
-VALUES (1, 'Grand Theater', '123 Main St', 500, 'Theater Style');
-INSERT INTO Venue (VenueID, Name, Location, Capacity, SeatingLayout)
-VALUES (2, 'City Hall', '456 Market Ave', 300, 'Stadium Style');
-
-
-
-
--- Seats for Venue 1 (Grand Theater)
-INSERT INTO Seat (SeatID, VenueID, SeatNumber, Category, Availability)
-VALUES (1, 1, 'A1', 'Regular', 'Y');
-INSERT INTO Seat (SeatID, VenueID, SeatNumber, Category, Availability)
-VALUES (2, 1, 'A2', 'Regular', 'Y');
-INSERT INTO Seat (SeatID, VenueID, SeatNumber, Category, Availability)
-VALUES (3, 1, 'B1', 'VIP', 'Y');
-INSERT INTO Seat (SeatID, VenueID, SeatNumber, Category, Availability)
-VALUES (4, 1, 'B2', 'VIP', 'Y');
-
--- Seats for Venue 2 (City Hall)
-INSERT INTO Seat (SeatID, VenueID, SeatNumber, Category, Availability)
-VALUES (5, 2, 'C1', 'Regular', 'Y');
-INSERT INTO Seat (SeatID, VenueID, SeatNumber, Category, Availability)
-VALUES (6, 2, 'C2', 'Regular', 'Y');
-
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Alice Smith', 'alice.smith@example.com', '1234567890', 'password123', 'Regular');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Bob Johnson', 'bob.johnson@example.com', '1234567891', 'password123', 'Regular');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Charlie Brown', 'charlie.brown@example.com', '1234567892', 'password123', 'Regular');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Daisy Miller', 'daisy.miller@example.com', '1234567893', 'password123', 'Regular');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Ethan Green', 'ethan.green@example.com', '1234567894', 'password123', 'Regular');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Fiona White', 'fiona.white@example.com', '1234567895', 'password123', 'Regular');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('George Black', 'george.black@example.com', '1234567896', 'password123', 'Regular');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Hannah Blue', 'hannah.blue@example.com', '1234567897', 'password123', 'Regular');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Ian Grey', 'ian.grey@example.com', '1234567898', 'password123', 'Regular');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Jessica Pink', 'jessica.pink@example.com', '1234567899', 'password123', 'Regular');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Kevin Orange', 'kevin.orange@example.com', '1234567800', 'password123', 'Regular');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Laura Purple', 'laura.purple@example.com', '1234567801', 'password123', 'Regular');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Mike Brown', 'mike.brown@example.com', '1234567802', 'password123', 'Regular');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Nina Gold', 'nina.gold@example.com', '1234567803', 'password123', 'Regular');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Oscar Silver', 'oscar.silver@example.com', '1234567804', 'password123', 'Regular');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Paula Red', 'paula.red@example.com', '1234567805', 'password123', 'Regular');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Quinn Cyan', 'quinn.cyan@example.com', '1234567806', 'password123', 'Regular');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Ryan Teal', 'ryan.teal@example.com', '1234567807', 'password123', 'Regular');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Sophie Indigo', 'sophie.indigo@example.com', '1234567808', 'password123', 'Regular');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Tom Magenta', 'tom.magenta@example.com', '1234567809', 'password123', 'Regular');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Uma Violet', 'uma.violet@example.com', '1234567810', 'password123', 'Regular');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Vera Mint', 'vera.mint@example.com', '1234567811', 'password123', 'Regular');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Will Lime', 'will.lime@example.com', '1234567812', 'password123', 'Regular');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Xena Olive', 'xena.olive@example.com', '1234567813', 'password123', 'Regular');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Yara Coral', 'yara.coral@example.com', '1234567814', 'password123', 'Regular');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Zane Peach', 'zane.peach@example.com', '1234567815', 'password123', 'Regular');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Alice Organizer', 'alice.organizer@example.com', '2234567890', 'organizer123', 'Organizer');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Bob Organizer', 'bob.organizer@example.com', '2234567891', 'organizer123', 'Organizer');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Charlie Organizer', 'charlie.organizer@example.com', '2234567892', 'organizer123', 'Organizer');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Daisy Organizer', 'daisy.organizer@example.com', '2234567893', 'organizer123', 'Organizer');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Ethan Organizer', 'ethan.organizer@example.com', '2234567894', 'organizer123', 'Organizer');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Fiona Organizer', 'fiona.organizer@example.com', '2234567895', 'organizer123', 'Organizer');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('George Organizer', 'george.organizer@example.com', '2234567896', 'organizer123', 'Organizer');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Hannah Organizer', 'hannah.organizer@example.com', '2234567897', 'organizer123', 'Organizer');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Ian Organizer', 'ian.organizer@example.com', '2234567898', 'organizer123', 'Organizer');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Jessica Organizer', 'jessica.organizer@example.com', '2234567899', 'organizer123', 'Organizer');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Kevin Organizer', 'kevin.organizer@example.com', '2234567800', 'organizer123', 'Organizer');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Laura Organizer', 'laura.organizer@example.com', '2234567801', 'organizer123', 'Organizer');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Mike Organizer', 'mike.organizer@example.com', '2234567802', 'organizer123', 'Organizer');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Nina Organizer', 'nina.organizer@example.com', '2234567803', 'organizer123', 'Organizer');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Oscar Organizer', 'oscar.organizer@example.com', '2234567804', 'organizer123', 'Organizer');
+INSERT INTO Users (Name, Email, PhoneNumber, Password, UserType) VALUES ('Paula Organizer', 'paula.organizer@example.com', '2234567805', 'organizer123', 'Organizer');
 
 
-
--- Events (assigned to Organizers 5 and 6)
-INSERT INTO Events (EventID, Title, Description, Category, EventDate, EventTime, OrganizerID, VenueID, Status)
-VALUES (1, 'Avengers: Endgame', 'Marvel Movie', 'Movie', TO_DATE('2024-11-15', 'YYYY-MM-DD'), TO_TIMESTAMP('2024-11-15 19:00:00', 'YYYY-MM-DD HH24:MI:SS'), 5, 1, 'Active');
-INSERT INTO Events (EventID, Title, Description, Category, EventDate, EventTime, OrganizerID, VenueID, Status)
-VALUES (2, 'Inception', 'Sci-Fi Thriller', 'Movie', TO_DATE('2024-11-16', 'YYYY-MM-DD'), TO_TIMESTAMP('2024-11-16 20:00:00', 'YYYY-MM-DD HH24:MI:SS'), 6, 2, 'Active');
-
-
-
-
--- Bookings for Event 1 (Avengers: Endgame)
-INSERT INTO Booking (BookingID, UserID, EventID, BookingDate, BookingStatus, TotalAmount)
-VALUES (1, 1, 1, TO_DATE('2024-10-01', 'YYYY-MM-DD'), 'Confirmed', 500.00);
-INSERT INTO Booking (BookingID, UserID, EventID, BookingDate, BookingStatus, TotalAmount)
-VALUES (2, 2, 1, TO_DATE('2024-10-01', 'YYYY-MM-DD'), 'Confirmed', 500.00);
-
--- Bookings for Event 2 (Inception)
-INSERT INTO Booking (BookingID, UserID, EventID, BookingDate, BookingStatus, TotalAmount)
-VALUES (3, 3, 2, TO_DATE('2024-10-01', 'YYYY-MM-DD'), 'Confirmed', 400.00);
-INSERT INTO Booking (BookingID, UserID, EventID, BookingDate, BookingStatus, TotalAmount)
-VALUES (4, 4, 2, TO_DATE('2024-10-01', 'YYYY-MM-DD'), 'Confirmed', 400.00);
+INSERT INTO Venue (Name, Location, Capacity, SeatingLayout) VALUES ('Grand Theatre', '123 Main St, Cityville', 500, 'Orchestra, Balcony');
+INSERT INTO Venue (Name, Location, Capacity, SeatingLayout) VALUES ('City Sports Arena', '456 Sports Ave, Cityville', 2000, 'General Admission');
+INSERT INTO Venue (Name, Location, Capacity, SeatingLayout) VALUES ('Downtown Cinema', '789 Movie Blvd, Cityville', 300, 'Standard Seating');
+INSERT INTO Venue (Name, Location, Capacity, SeatingLayout) VALUES ('Starlight Concert Hall', '321 Music Rd, Cityville', 750, 'Orchestra, Mezzanine');
+INSERT INTO Venue (Name, Location, Capacity, SeatingLayout) VALUES ('Community Center', '654 Community Dr, Cityville', 400, 'Auditorium');
+INSERT INTO Venue (Name, Location, Capacity, SeatingLayout) VALUES ('Riverfront Park', '987 River Rd, Cityville', 1500, 'Outdoor Seating');
+INSERT INTO Venue (Name, Location, Capacity, SeatingLayout) VALUES ('Civic Auditorium', '135 Civic Sq, Cityville', 1000, 'Theater Style');
+INSERT INTO Venue (Name, Location, Capacity, SeatingLayout) VALUES ('Exhibition Hall', '246 Expo Way, Cityville', 800, 'Booths, Tables');
+INSERT INTO Venue (Name, Location, Capacity, SeatingLayout) VALUES ('Art Gallery', '369 Art St, Cityville', 200, 'Open Space');
+INSERT INTO Venue (Name, Location, Capacity, SeatingLayout) VALUES ('Historic Theatre', '147 Heritage Rd, Cityville', 600, 'Orchestra, Balcony');
+INSERT INTO Venue (Name, Location, Capacity, SeatingLayout) VALUES ('Business Convention Center', '258 Business St, Cityville', 1200, 'Conference Setup');
+INSERT INTO Venue (Name, Location, Capacity, SeatingLayout) VALUES ('Music Fest Grounds', '369 Festival Rd, Cityville', 5000, 'Open Field');
+INSERT INTO Venue (Name, Location, Capacity, SeatingLayout) VALUES ('Tech Conference Hall', '963 Innovation Ave, Cityville', 300, 'Classroom Style');
+INSERT INTO Venue (Name, Location, Capacity, SeatingLayout) VALUES ('Family Fun Center', '852 Play St, Cityville', 400, 'Games Area');
+INSERT INTO Venue (Name, Location, Capacity, SeatingLayout) VALUES ('University Auditorium', '147 University Dr, Cityville', 1000, 'Theater Style');
+INSERT INTO Venue (Name, Location, Capacity, SeatingLayout) VALUES ('City Art Museum', '456 Art Lane, Cityville', 800, 'Gallery Style');
 
 
+INSERT INTO Events (Title, Description, Category, EventDate, EventTime, OrganizerID, VenueID, Status) VALUES ('Avengers: Endgame', 'Epic conclusion to the Avengers saga.', 'Movie', TO_DATE('2024-10-25', 'YYYY-MM-DD'), TO_TIMESTAMP('2024-10-25 19:00:00', 'YYYY-MM-DD HH24:MI:SS'), 1, 1, 'Active');
+INSERT INTO Events (Title, Description, Category, EventDate, EventTime, OrganizerID, VenueID, Status) VALUES ('Rock Concert Night', 'Live performance by top rock bands.', 'Concert', TO_DATE('2024-11-01', 'YYYY-MM-DD'), TO_TIMESTAMP('2024-11-01 20:00:00', 'YYYY-MM-DD HH24:MI:SS'), 2, 2, 'Active');
+INSERT INTO Events (Title, Description, Category, EventDate, EventTime, OrganizerID, VenueID, Status) VALUES ('Local Football Match', 'City vs Town football match.', 'Sports', TO_DATE('2024-11-05', 'YYYY-MM-DD'), TO_TIMESTAMP('2024-11-05 15:00:00', 'YYYY-MM-DD HH24:MI:SS'), 3, 3, 'Active');
+INSERT INTO Events (Title, Description, Category, EventDate, EventTime, OrganizerID, VenueID, Status) VALUES ('Shakespeare in the Park', 'A classic play performed outdoors.', 'Play', TO_DATE('2024-11-10', 'YYYY-MM-DD'), TO_TIMESTAMP('2024-11-10 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), 4, 4, 'Active');
+INSERT INTO Events (Title, Description, Category, EventDate, EventTime, OrganizerID, VenueID, Status) VALUES ('Jazz Nights', 'Evening of smooth jazz and refreshments.', 'Concert', TO_DATE('2024-11-12', 'YYYY-MM-DD'), TO_TIMESTAMP('2024-11-12 19:30:00', 'YYYY-MM-DD HH24:MI:SS'), 5, 5, 'Active');
+INSERT INTO Events (Title, Description, Category, EventDate, EventTime, OrganizerID, VenueID, Status) VALUES ('National Championship', 'Annual football championship.', 'Sports', TO_DATE('2024-11-15', 'YYYY-MM-DD'), TO_TIMESTAMP('2024-11-15 16:00:00', 'YYYY-MM-DD HH24:MI:SS'), 6, 6, 'Active');
+INSERT INTO Events (Title, Description, Category, EventDate, EventTime, OrganizerID, VenueID, Status) VALUES ('Stand-up Comedy Night', 'Laughs and entertainment from top comedians.', 'Play', TO_DATE('2024-11-20', 'YYYY-MM-DD'), TO_TIMESTAMP('2024-11-20 20:00:00', 'YYYY-MM-DD HH24:MI:SS'), 7, 7, 'Active');
+INSERT INTO Events (Title, Description, Category, EventDate, EventTime, OrganizerID, VenueID, Status) VALUES ('Art Exhibition', 'Showcasing local artists and their work.', 'Movie', TO_DATE('2024-11-25', 'YYYY-MM-DD'), TO_TIMESTAMP('2024-11-25 10:00:00', 'YYYY-MM-DD HH24:MI:SS'), 8, 8, 'Active');
+INSERT INTO Events (Title, Description, Category, EventDate, EventTime, OrganizerID, VenueID, Status) VALUES ('Gala Dinner', 'Charity gala with fine dining.', 'Concert', TO_DATE('2024-11-30', 'YYYY-MM-DD'), TO_TIMESTAMP('2024-11-30 19:00:00', 'YYYY-MM-DD HH24:MI:SS'), 9, 9, 'Active');
+INSERT INTO Events (Title, Description, Category, EventDate, EventTime, OrganizerID, VenueID, Status) VALUES ('Tech Conference 2024', 'Latest trends in technology.', 'Sports', TO_DATE('2024-12-05', 'YYYY-MM-DD'), TO_TIMESTAMP('2024-12-05 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), 10, 10, 'Active');
+INSERT INTO Events (Title, Description, Category, EventDate, EventTime, OrganizerID, VenueID, Status) VALUES ('Christmas Market', 'Festive market with local vendors.', 'Movie', TO_DATE('2024-12-10', 'YYYY-MM-DD'), TO_TIMESTAMP('2024-12-10 14:00:00', 'YYYY-MM-DD HH24:MI:SS'), 11, 11, 'Active');
+INSERT INTO Events (Title, Description, Category, EventDate, EventTime, OrganizerID, VenueID, Status) VALUES ('New Year Celebration', 'Party to welcome the New Year.', 'Concert', TO_DATE('2024-12-31', 'YYYY-MM-DD'), TO_TIMESTAMP('2024-12-31 22:00:00', 'YYYY-MM-DD HH24:MI:SS'), 12, 12, 'Active');
+INSERT INTO Events (Title, Description, Category, EventDate, EventTime, OrganizerID, VenueID, Status) VALUES ('Winter Festival', 'Festive celebrations with activities.', 'Sports', TO_DATE('2024-12-25', 'YYYY-MM-DD'), TO_TIMESTAMP('2024-12-25 10:00:00', 'YYYY-MM-DD HH24:MI:SS'), 13, 13, 'Active');
+INSERT INTO Events (Title, Description, Category, EventDate, EventTime, OrganizerID, VenueID, Status) VALUES ('Folk Music Festival', 'Local folk music performances.', 'Concert', TO_DATE('2024-12-15', 'YYYY-MM-DD'), TO_TIMESTAMP('2024-12-15 18:00:00', 'YYYY-MM-DD HH24:MI:SS'), 14, 14, 'Active');
 
 
--- Tickets for Event 1 (Avengers: Endgame)
-INSERT INTO Ticket (TicketID, EventID, SeatID, Price, QRCode, BookingID)
-VALUES (1, 1, 1, 250.00, 'QRCODE123', 1);
-INSERT INTO Ticket (TicketID, EventID, SeatID, Price, QRCode, BookingID)
-VALUES (2, 1, 2, 250.00, 'QRCODE124', 2);
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (1, 'A1', 'VIP', 'Y');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (1, 'A2', 'VIP', 'Y');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (1, 'A3', 'VIP', 'N');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (1, 'B1', 'Regular', 'Y');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (1, 'B2', 'Regular', 'N');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (1, 'B3', 'Regular', 'Y');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (2, 'C1', 'VIP', 'Y');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (2, 'C2', 'VIP', 'Y');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (2, 'C3', 'VIP', 'N');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (2, 'D1', 'Regular', 'Y');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (2, 'D2', 'Regular', 'N');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (2, 'D3', 'Regular', 'Y');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (3, 'E1', 'VIP', 'Y');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (3, 'E2', 'VIP', 'N');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (3, 'E3', 'VIP', 'Y');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (3, 'F1', 'Regular', 'Y');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (3, 'F2', 'Regular', 'N');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (3, 'F3', 'Regular', 'Y');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (4, 'G1', 'VIP', 'Y');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (4, 'G2', 'VIP', 'Y');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (4, 'G3', 'VIP', 'N');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (4, 'H1', 'Regular', 'Y');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (4, 'H2', 'Regular', 'Y');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (4, 'H3', 'Regular', 'Y');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (5, 'I1', 'VIP', 'Y');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (5, 'I2', 'VIP', 'N');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (5, 'I3', 'VIP', 'Y');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (5, 'J1', 'Regular', 'Y');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (5, 'J2', 'Regular', 'Y');
+INSERT INTO Seat (VenueID, SeatNumber, Category, Availability) VALUES (5, 'J3', 'Regular', 'N');
 
--- Tickets for Event 2 (Inception)
-INSERT INTO Ticket (TicketID, EventID, SeatID, Price, QRCode, BookingID)
-VALUES (3, 2, 3, 200.00, 'QRCODE125', 3);
-INSERT INTO Ticket (TicketID, EventID, SeatID, Price, QRCode, BookingID)
-VALUES (4, 2, 4, 200.00, 'QRCODE126', 4);
+
+INSERT INTO Booking (UserID, EventID, BookingDate, BookingStatus, TotalAmount) VALUES (1, 1, SYSDATE, 'Confirmed', 500.00);
+INSERT INTO Booking (UserID, EventID, BookingDate, BookingStatus, TotalAmount) VALUES (2, 2, SYSDATE, 'Confirmed', 800.00);
+INSERT INTO Booking (UserID, EventID, BookingDate, BookingStatus, TotalAmount) VALUES (3, 3, SYSDATE, 'Cancelled', 600.00);
+INSERT INTO Booking (UserID, EventID, BookingDate, BookingStatus, TotalAmount) VALUES (4, 4, SYSDATE, 'Confirmed', 700.00);
+INSERT INTO Booking (UserID, EventID, BookingDate, BookingStatus, TotalAmount) VALUES (5, 5, SYSDATE, 'Confirmed', 900.00);
+INSERT INTO Booking (UserID, EventID, BookingDate, BookingStatus, TotalAmount) VALUES (6, 6, SYSDATE, 'Cancelled', 400.00);
+INSERT INTO Booking (UserID, EventID, BookingDate, BookingStatus, TotalAmount) VALUES (7, 1, SYSDATE, 'Confirmed', 550.00);
+INSERT INTO Booking (UserID, EventID, BookingDate, BookingStatus, TotalAmount) VALUES (8, 2, SYSDATE, 'Cancelled', 850.00);
+INSERT INTO Booking (UserID, EventID, BookingDate, BookingStatus, TotalAmount) VALUES (9, 3, SYSDATE, 'Confirmed', 450.00);
+INSERT INTO Booking (UserID, EventID, BookingDate, BookingStatus, TotalAmount) VALUES (10, 4, SYSDATE, 'Confirmed', 750.00);
+INSERT INTO Booking (UserID, EventID, BookingDate, BookingStatus, TotalAmount) VALUES (11, 5, SYSDATE, 'Cancelled', 950.00);
+INSERT INTO Booking (UserID, EventID, BookingDate, BookingStatus, TotalAmount) VALUES (12, 6, SYSDATE, 'Confirmed', 650.00);
+INSERT INTO Booking (UserID, EventID, BookingDate, BookingStatus, TotalAmount) VALUES (13, 1, SYSDATE, 'Confirmed', 580.00);
+INSERT INTO Booking (UserID, EventID, BookingDate, BookingStatus, TotalAmount) VALUES (14, 2, SYSDATE, 'Confirmed', 720.00);
+INSERT INTO Booking (UserID, EventID, BookingDate, BookingStatus, TotalAmount) VALUES (15, 3, SYSDATE, 'Cancelled', 480.00);
+INSERT INTO Booking (UserID, EventID, BookingDate, BookingStatus, TotalAmount) VALUES (16, 4, SYSDATE, 'Confirmed', 760.00);
+INSERT INTO Booking (UserID, EventID, BookingDate, BookingStatus, TotalAmount) VALUES (17, 5, SYSDATE, 'Confirmed', 910.00);
+INSERT INTO Booking (UserID, EventID, BookingDate, BookingStatus, TotalAmount) VALUES (18, 6, SYSDATE, 'Cancelled', 430.00);
+INSERT INTO Booking (UserID, EventID, BookingDate, BookingStatus, TotalAmount) VALUES (19, 1, SYSDATE, 'Confirmed', 570.00);
+INSERT INTO Booking (UserID, EventID, BookingDate, BookingStatus, TotalAmount) VALUES (20, 2, SYSDATE, 'Confirmed', 740.00);
 
 
+INSERT INTO Ticket (EventID, SeatID, Price, QRCode, BookingID) VALUES (1, 1, 250.00, 'QR1-001', 1);
+INSERT INTO Ticket (EventID, SeatID, Price, QRCode, BookingID) VALUES (1, 2, 250.00, 'QR1-002', 1);
+INSERT INTO Ticket (EventID, SeatID, Price, QRCode, BookingID) VALUES (2, 3, 300.00, 'QR2-001', 2);
+INSERT INTO Ticket (EventID, SeatID, Price, QRCode, BookingID) VALUES (2, 4, 300.00, 'QR2-002', 2);
+INSERT INTO Ticket (EventID, SeatID, Price, QRCode, BookingID) VALUES (3, 5, 280.00, 'QR3-001', 3);
+INSERT INTO Ticket (EventID, SeatID, Price, QRCode, BookingID) VALUES (3, 6, 280.00, 'QR3-002', 3);
+INSERT INTO Ticket (EventID, SeatID, Price, QRCode, BookingID) VALUES (4, 7, 320.00, 'QR4-001', 4);
+INSERT INTO Ticket (EventID, SeatID, Price, QRCode, BookingID) VALUES (4, 8, 320.00, 'QR4-002', 4);
+INSERT INTO Ticket (EventID, SeatID, Price, QRCode, BookingID) VALUES (5, 9, 350.00, 'QR5-001', 5);
+INSERT INTO Ticket (EventID, SeatID, Price, QRCode, BookingID) VALUES (5, 10, 350.00, 'QR5-002', 5);
+INSERT INTO Ticket (EventID, SeatID, Price, QRCode, BookingID) VALUES (6, 11, 400.00, 'QR6-001', 6);
+INSERT INTO Ticket (EventID, SeatID, Price, QRCode, BookingID) VALUES (6, 12, 400.00, 'QR6-002', 6);
+INSERT INTO Ticket (EventID, SeatID, Price, QRCode, BookingID) VALUES (1, 13, 250.00, 'QR1-003', 7);
+INSERT INTO Ticket (EventID, SeatID, Price, QRCode, BookingID) VALUES (2, 14, 300.00, 'QR2-003', 8);
+INSERT INTO Ticket (EventID, SeatID, Price, QRCode, BookingID) VALUES (3, 15, 280.00, 'QR3-003', 9);
+INSERT INTO Ticket (EventID, SeatID, Price, QRCode, BookingID) VALUES (4, 16, 320.00, 'QR4-003', 10);
+INSERT INTO Ticket (EventID, SeatID, Price, QRCode, BookingID) VALUES (5, 17, 350.00, 'QR5-003', 11);
+INSERT INTO Ticket (EventID, SeatID, Price, QRCode, BookingID) VALUES (6, 18, 400.00, 'QR6-003', 12);
 
 
--- Payments for Booking 1 and 2 (Event 1)
-INSERT INTO Payment (PaymentID, BookingID, Amount, PaymentMethod, Status, PaymentDate, PaymentTime)
-VALUES (1, 1, 500.00, 'CreditCard', 'Success', TO_DATE('2024-10-01', 'YYYY-MM-DD'), TO_TIMESTAMP('2024-10-01 10:00:00', 'YYYY-MM-DD HH24:MI:SS'));
-INSERT INTO Payment (PaymentID, BookingID, Amount, PaymentMethod, Status, PaymentDate, PaymentTime)
-VALUES (2, 2, 500.00, 'UPI', 'Success', TO_DATE('2024-10-01', 'YYYY-MM-DD'), TO_TIMESTAMP('2024-10-01 10:05:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO Payment (BookingID, Amount, PaymentMethod, Status) VALUES (1, 250.00, 'CreditCard', 'Success');
+INSERT INTO Payment (BookingID, Amount, PaymentMethod, Status) VALUES (2, 600.00, 'DebitCard', 'Success');
+INSERT INTO Payment (BookingID, Amount, PaymentMethod, Status) VALUES (3, 560.00, 'Wallet', 'Success');
+INSERT INTO Payment (BookingID, Amount, PaymentMethod, Status) VALUES (4, 640.00, 'UPI', 'Success');
+INSERT INTO Payment (BookingID, Amount, PaymentMethod, Status) VALUES (5, 700.00, 'CreditCard', 'Success');
+INSERT INTO Payment (BookingID, Amount, PaymentMethod, Status) VALUES (6, 800.00, 'DebitCard', 'Failed');
+INSERT INTO Payment (BookingID, Amount, PaymentMethod, Status) VALUES (7, 250.00, 'Wallet', 'Success');
+INSERT INTO Payment (BookingID, Amount, PaymentMethod, Status) VALUES (8, 300.00, 'UPI', 'Failed');
+INSERT INTO Payment (BookingID, Amount, PaymentMethod, Status) VALUES (9, 280.00, 'CreditCard', 'Success');
+INSERT INTO Payment (BookingID, Amount, PaymentMethod, Status) VALUES (10, 320.00, 'DebitCard', 'Success');
+INSERT INTO Payment (BookingID, Amount, PaymentMethod, Status) VALUES (11, 350.00, 'Wallet', 'Success');
+INSERT INTO Payment (BookingID, Amount, PaymentMethod, Status) VALUES (12, 400.00, 'UPI', 'Success');
 
--- Payments for Booking 3 and 4 (Event 2)
-INSERT INTO Payment (PaymentID, BookingID, Amount, PaymentMethod, Status, PaymentDate, PaymentTime)
-VALUES (3, 3, 400.00, 'DebitCard', 'Success', TO_DATE('2024-10-01', 'YYYY-MM-DD'), TO_TIMESTAMP('2024-10-01 11:00:00', 'YYYY-MM-DD HH24:MI:SS'));
-INSERT INTO Payment (PaymentID, BookingID, Amount, PaymentMethod, Status, PaymentDate, PaymentTime)
-VALUES (4, 4, 400.00, 'Wallet', 'Success', TO_DATE('2024-10-01', 'YYYY-MM-DD'), TO_TIMESTAMP('2024-10-01 11:05:00', 'YYYY-MM-DD HH24:MI:SS'));
+
+INSERT INTO CustomerSupport (UserID, IssueDescription, ResolutionStatus) VALUES (1, 'Unable to book tickets for the concert.', 'Resolved');
+INSERT INTO CustomerSupport (UserID, IssueDescription, ResolutionStatus) VALUES (2, 'Payment failed for movie tickets.', 'Pending');
+INSERT INTO CustomerSupport (UserID, IssueDescription, ResolutionStatus) VALUES (3, 'Seat selection is not working.', 'In Progress');
+INSERT INTO CustomerSupport (UserID, IssueDescription, ResolutionStatus) VALUES (4, 'Refund not received for cancelled event.', 'Resolved');
+INSERT INTO CustomerSupport (UserID, IssueDescription, ResolutionStatus) VALUES (5, 'Website not loading.', 'Pending');
+INSERT INTO CustomerSupport (UserID, IssueDescription, ResolutionStatus) VALUES (6, 'Cannot access my account.', 'Resolved');
+INSERT INTO CustomerSupport (UserID, IssueDescription, ResolutionStatus) VALUES (7, 'Incorrect event details shown.', 'In Progress');
+INSERT INTO CustomerSupport (UserID, IssueDescription, ResolutionStatus) VALUES (8, 'Need assistance with my booking.', 'Pending');
+INSERT INTO CustomerSupport (UserID, IssueDescription, ResolutionStatus) VALUES (9, 'The event was cancelled but no notification.', 'Resolved');
+INSERT INTO CustomerSupport (UserID, IssueDescription, ResolutionStatus) VALUES (10, 'Issue with changing my password.', 'In Progress');
