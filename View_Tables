@@ -1,29 +1,74 @@
+-- View for Active Events
 CREATE VIEW ActiveEvents AS
-SELECT eventid, title, venueid, eventdate, status
+SELECT EventID, Title, EventDate, EventTime, VenueID
 FROM Events
-WHERE eventdate > SYSDATE;
-select * from activeevents;
+WHERE Status = 'Active';
 
+-- View for Bookings with User Information
+CREATE VIEW UserBookings AS
+SELECT b.BookingID, b.BookingDate, b.BookingStatus, u.Name, u.Email, e.Title
+FROM Booking b
+JOIN Users u ON b.UserID = u.UserID
+JOIN Events e ON b.EventID = e.EventID;
 
-CREATE VIEW CompletedEvents AS
-SELECT eventid, title, venueid, eventdate, status
-FROM Events
-WHERE eventdate <= SYSDATE;
-select * from completedevents;
+-- View for Ticket Information with Event Details
+CREATE VIEW TicketDetails AS
+SELECT t.TicketID, t.Price, e.Title, s.SeatNumber
+FROM Ticket t
+JOIN Events e ON t.EventID = e.EventID
+JOIN Seat s ON t.SeatID = s.SeatID;
 
+-- View for Payments with Booking Details
+CREATE VIEW PaymentDetails AS
+SELECT p.PaymentID, p.Amount, p.PaymentMethod, p.Status, b.BookingID, b.TotalAmount
+FROM Payment p
+JOIN Booking b ON p.BookingID = b.BookingID;
 
-CREATE VIEW UpcomingEventsByVenue AS
-SELECT venueid, eventid, title, eventdate, eventtime, status
-FROM Events
-WHERE eventdate > SYSDATE
-ORDER BY venueid, eventdate;
-select * from upcomingeventsbyvenue;
+-- View for Customer Support Issues
+CREATE VIEW CustomerSupportIssues AS
+SELECT cs.SupportID, cs.IssueDescription, cs.IssueDate, cs.ResolutionStatus, u.Name
+FROM CustomerSupport cs
+JOIN Users u ON cs.UserID = u.UserID;
 
+-- View for Venue Information
+CREATE VIEW VenueInfo AS
+SELECT VenueID, Name, Location, Capacity
+FROM Venue;
 
-CREATE VIEW AvailableSeats AS
-SELECT e.eventid, e.title, v.venueid, v.capacity - COUNT(b.bookingid) AS available_seats
+-- View for Seats Availability
+CREATE VIEW SeatsAvailability AS
+SELECT s.SeatID, s.SeatNumber, s.Availability, v.Name AS VenueName
+FROM Seat s
+JOIN Venue v ON s.VenueID = v.VenueID
+WHERE s.Availability = 'Y';
+
+-- View for Organizer Events
+CREATE VIEW OrganizerEvents AS
+SELECT e.EventID, e.Title, u.Name AS OrganizerName
 FROM Events e
-JOIN Venue v ON e.venueid = v.venueid
-LEFT JOIN Booking b ON e.eventid = b.eventid
-GROUP BY e.eventid, e.title, v.venueid, v.capacity;
-SELECT * FROM AvailableSeats;
+JOIN Users u ON e.OrganizerID = u.UserID;
+
+-- View for Total Revenue from Bookings
+CREATE VIEW TotalRevenue AS
+SELECT SUM(p.Amount) AS TotalRevenue
+FROM Payment p
+JOIN Booking b ON p.BookingID = b.BookingID;
+
+-- View for User Statistics
+CREATE VIEW UserStatistics AS
+SELECT u.UserID, u.Name, COUNT(b.BookingID) AS TotalBookings
+FROM Users u
+LEFT JOIN Booking b ON u.UserID = b.UserID
+GROUP BY u.UserID, u.Name;
+
+-- Test the views
+SELECT * FROM ActiveEvents;
+SELECT * FROM UserBookings;
+SELECT * FROM TicketDetails;
+SELECT * FROM PaymentDetails;
+SELECT * FROM CustomerSupportIssues;
+SELECT * FROM VenueInfo;
+SELECT * FROM SeatsAvailability;
+SELECT * FROM OrganizerEvents;
+SELECT * FROM TotalRevenue;
+SELECT * FROM UserStatistics;
