@@ -46,7 +46,7 @@ WHERE VenueID IN (
 );
 SELECT DISTINCT UserID
 FROM Booking
-WHERE TotalAmount > ALL (SELECT TotalAmount FROM Booking WHERE BookingStatus = 'Pending');
+WHERE TotalAmount > ALL (SELECT TotalAmount FROM Booking WHERE BookingStatus = 'pending');
 
 
 
