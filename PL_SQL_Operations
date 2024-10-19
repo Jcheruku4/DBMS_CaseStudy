@@ -1,1 +1,46 @@
+DECLARE
+    CURSOR concert_cursor IS
+        SELECT Events.EventID, MAX(Ticket.Price) AS MaxTicketPrice
+        FROM Ticket
+        JOIN Events ON Ticket.EventID = Events.EventID
+        WHERE Events.EventID IN (1, 2, 3, 4)
+        GROUP BY Events.EventID;
+        
+    v_EventID Events.EventID%TYPE;
+    v_MaxTicketPrice Ticket.Price%TYPE;
+BEGIN
+    OPEN concert_cursor;
 
+    LOOP
+        FETCH concert_cursor INTO v_EventID, v_MaxTicketPrice;
+        EXIT WHEN concert_cursor%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE('Event ID: ' || v_EventID || ', Max Ticket Price: ' || v_MaxTicketPrice);
+    END LOOP;
+
+    CLOSE concert_cursor;
+END;
+/
+
+
+
+
+DECLARE
+    v_TotalTickets_Event1 NUMBER;
+    v_TotalTickets_Event2 NUMBER;
+BEGIN
+    SELECT COUNT(Ticket.TicketID)
+    INTO v_TotalTickets_Event1
+    FROM Ticket
+    JOIN Events ON Ticket.EventID = Events.EventID
+    WHERE Events.EventID = 1;
+
+    SELECT COUNT(Ticket.TicketID)
+    INTO v_TotalTickets_Event2
+    FROM Ticket
+    JOIN Events ON Ticket.EventID = Events.EventID
+    WHERE Events.EventID = 2;
+
+    DBMS_OUTPUT.PUT_LINE('Total Tickets Sold for Event 1: ' || v_TotalTickets_Event1);
+    DBMS_OUTPUT.PUT_LINE('Total Tickets Sold for Event 2: ' || v_TotalTickets_Event2);
+END;
+/
