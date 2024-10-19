@@ -2,7 +2,6 @@
 SELECT u.Name, b.BookingDate, b.TotalAmount
 FROM Users u
 INNER JOIN Booking b ON u.UserID = b.UserID;
-
 SELECT e.Title, v.Name AS VenueName, e.EventDate
 FROM Events e
 INNER JOIN Venue v ON e.VenueID = v.VenueID;
@@ -14,7 +13,6 @@ INNER JOIN Venue v ON e.VenueID = v.VenueID;
 SELECT u.Name, b.BookingDate, b.TotalAmount
 FROM Users u
 LEFT JOIN Booking b ON u.UserID = b.UserID;
-
 SELECT v.Name AS VenueName, s.SeatNumber, s.Availability
 FROM Venue v
 LEFT JOIN Seat s ON v.VenueID = s.VenueID;
@@ -26,7 +24,6 @@ LEFT JOIN Seat s ON v.VenueID = s.VenueID;
 SELECT b.BookingID, t.Price, t.QRCode
 FROM Booking b
 RIGHT JOIN Ticket t ON b.BookingID = t.BookingID;
-
 SELECT s.SeatNumber, t.Price
 FROM Seat s
 RIGHT JOIN Ticket t ON s.SeatID = t.SeatID;
@@ -38,7 +35,6 @@ RIGHT JOIN Ticket t ON s.SeatID = t.SeatID;
 SELECT u.Name, cs.IssueDescription, cs.ResolutionStatus
 FROM Users u
 FULL OUTER JOIN CustomerSupport cs ON u.UserID = cs.UserID;
-
 SELECT e.Title, t.Price, t.QRCode
 FROM Events e
 FULL OUTER JOIN Ticket t ON e.EventID = t.EventID;
