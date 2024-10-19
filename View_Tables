@@ -1,0 +1,29 @@
+CREATE VIEW ActiveEvents AS
+SELECT eventid, title, venueid, eventdate, status
+FROM Events
+WHERE eventdate > SYSDATE;
+select * from activeevents;
+
+
+CREATE VIEW CompletedEvents AS
+SELECT eventid, title, venueid, eventdate, status
+FROM Events
+WHERE eventdate <= SYSDATE;
+select * from completedevents;
+
+
+CREATE VIEW UpcomingEventsByVenue AS
+SELECT venueid, eventid, title, eventdate, eventtime, status
+FROM Events
+WHERE eventdate > SYSDATE
+ORDER BY venueid, eventdate;
+select * from upcomingeventsbyvenue;
+
+
+CREATE VIEW AvailableSeats AS
+SELECT e.eventid, e.title, v.venueid, v.capacity - COUNT(b.bookingid) AS available_seats
+FROM Events e
+JOIN Venue v ON e.venueid = v.venueid
+LEFT JOIN Booking b ON e.eventid = b.eventid
+GROUP BY e.eventid, e.title, v.venueid, v.capacity;
+SELECT * FROM AvailableSeats;
