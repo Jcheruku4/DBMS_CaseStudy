@@ -1,0 +1,154 @@
+--IN
+SELECT Title, Category
+FROM Events
+WHERE Category IN ('Movie', 'Concert');
+SELECT BookingID, UserID, EventID
+FROM Booking
+WHERE UserID IN (1, 2, 3, 4, 5);
+
+
+
+
+--NOT IN
+SELECT Title, OrganizerID
+FROM Events
+WHERE OrganizerID NOT IN (1, 2, 3);
+SELECT Name
+FROM Venue
+WHERE VenueID NOT IN (SELECT DISTINCT VenueID FROM Events);
+
+
+
+
+--ANY
+SELECT Title, VenueID
+FROM Events
+WHERE VenueID = ANY (
+    SELECT VenueID
+    FROM Venue
+    WHERE Capacity > ANY (SELECT Capacity FROM Venue WHERE Name LIKE '%Theatre%')
+);
+SELECT BookingID, TotalAmount
+FROM Booking
+WHERE TotalAmount > ANY (SELECT TotalAmount FROM Booking 
+WHERE BookingStatus = 'Cancelled');
+
+
+
+
+--ALL
+SELECT Title, VenueID
+FROM Events
+WHERE VenueID IN (
+    SELECT VenueID
+    FROM Venue
+    WHERE Capacity > ALL (SELECT Capacity FROM Venue WHERE Name LIKE '%Cinema%')
+);
+SELECT DISTINCT UserID
+FROM Booking
+WHERE TotalAmount > ALL (SELECT TotalAmount FROM Booking WHERE BookingStatus = 'Cancelled');
+
+
+
+
+--EXISTS
+SELECT Name, Email
+FROM Users u
+WHERE EXISTS (
+    SELECT 1
+    FROM Booking b
+    WHERE b.UserID = u.UserID
+);
+SELECT Title
+FROM Events e
+WHERE EXISTS (
+    SELECT 1
+    FROM Seat s
+    WHERE s.VenueID = e.VenueID AND s.Category = 'VIP'
+);
+
+
+
+
+--NOT EXISTS
+SELECT Name, Email
+FROM Users u
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM Booking b
+    WHERE b.UserID = u.UserID
+);
+SELECT Name, Location
+FROM Venue v
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM Events e
+    WHERE e.VenueID = v.VenueID
+);
+
+
+
+
+--UNION
+SELECT Name, Email, 'Regular' AS UserType
+FROM Users
+WHERE UserType = 'Regular'
+UNION
+SELECT Name, Email, 'Organizer' AS UserType
+FROM Users
+WHERE UserType = 'Organizer';
+SELECT Title AS Name, 'Event' AS Type
+FROM Events
+UNION
+SELECT Name, 'Venue' AS Type
+FROM Venue;
+
+
+
+
+--UNION ALL
+SELECT BookingID, TotalAmount, 'Booking' AS Type
+FROM Booking
+UNION ALL
+SELECT BookingID, Amount, 'Payment' AS Type
+FROM Payment;
+SELECT SeatNumber, 'VIP' AS Category
+FROM Seat
+WHERE Category = 'VIP'
+UNION ALL
+SELECT SeatNumber, 'Regular' AS Category
+FROM Seat
+WHERE Category = 'Regular';
+
+
+
+
+--EXCEPT
+SELECT UserID
+FROM Booking
+MINUS
+SELECT UserID
+FROM CustomerSupport;
+SELECT VenueID
+FROM Events
+MINUS
+SELECT VenueID
+FROM Seat
+WHERE Category = 'VIP';
+
+
+
+
+--INTERSECT
+SELECT UserID
+FROM Booking
+INTERSECT
+SELECT UserID
+FROM CustomerSupport;
+SELECT VenueID
+FROM Seat
+WHERE Category = 'VIP'
+INTERSECT
+SELECT VenueID
+FROM Seat
+WHERE Category = 'Regular';
