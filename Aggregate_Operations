@@ -1,36 +1,18 @@
---SUM
 SELECT SUM(TotalAmount) AS TotalBookingAmount FROM Booking;
-
 SELECT SUM(Price) AS TotalTicketSales FROM Ticket;
 
 
-
-
---MIN
 SELECT MIN(TotalAmount) AS MinimumBookingAmount FROM Booking;
-
 SELECT MIN(Price) AS MinimumTicketPrice FROM Ticket;
 
 
-
-
---MAX
 SELECT MAX(TotalAmount) AS MaximumBookingAmount FROM Booking;
-
 SELECT MAX(Price) AS MaximumTicketPrice FROM Ticket;
 
 
-
-
---AVG
 SELECT AVG(TotalAmount) AS AverageBookingAmount FROM Booking;
-
 SELECT AVG(Price) AS AverageTicketPrice FROM Ticket;
 
 
-
-
---COUNT
 SELECT COUNT(*) AS TotalBookings FROM Booking;
-
 SELECT COUNT(*) AS TotalTicketsSold FROM Ticket;
